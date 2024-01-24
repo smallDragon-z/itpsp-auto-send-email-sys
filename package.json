@@ -17,6 +17,11 @@
     "commitlint": "commitlint --edit",
     "prepare": "husky install"
   },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  },
   "lint-staged": {
     "**/*.{js,jsx,tsx,ts,css,scss,md,json}": "prettier --ignore-unknown --write",
     "**/*.{css,scss}": "stylelint",
@@ -41,6 +46,7 @@
     "commitizen": "^4.3.0",
     "commitlint-config-cz": "^0.13.3",
     "cz-customizable": "^7.0.0",
+    "cz-git": "^1.8.0",
     "eslint": "^8.56.0",
     "eslint-config-next": "14.1.0",
     "eslint-config-prettier": "^9.1.0",
@@ -55,6 +61,7 @@
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recommended-scss": "^14.0.0",
     "stylelint-config-standard": "^36.0.0",
+    "stylelint-order": "^6.0.4",
     "stylelint-prettier": "^5.0.0",
     "typescript": "^5"
   }
