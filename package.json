@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "next:lint": "next lint",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx ./src --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx ./src --report-unused-disable-directives --max-warnings 0 --fix",
     "lint-staged": "lint-staged",
     "lint:style": "stylelint \"src/**/*.{css,scss}\" --fix",
     "type-check": "tsc --noEmit -p tsconfig.json --composite false",
@@ -28,6 +28,9 @@
     "**/*.{js,jsx,ts,tsx}": "eslint . --ext .js,.jsx,.ts,.tsx ./src --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
+    "antd": "^5.13.2",
+    "axios": "^1.6.5",
+    "cheerio": "1.0.0-rc.12",
     "echarts": "^5.4.3",
     "echarts-for-react": "^3.0.2",
     "next": "14.1.0",
