@@ -2,6 +2,8 @@ import { Button, Table } from 'antd';
 import ReactECharts from 'echarts-for-react';
 import { FC, useState } from 'react';
 
+import LayoutCom from '@/components/LayoutCom';
+
 interface DataProps {
   year: string;
   title: string;
@@ -57,19 +59,22 @@ const Home: FC<IHomeProps> = ({ data }) => {
     },
   ];
   return (
-    <div className="App">
-      <Button type="primary" onClick={() => setNumber((v) => v - 1)}>
-        -
-      </Button>
-      <div>{number}</div>
-      <Button type="primary" onClick={() => setNumber((v) => v + 1)}>
-        +
-      </Button>
-      <ReactECharts option={option} />
-      <Table dataSource={data} columns={columns} />
-    </div>
+    <LayoutCom>
+      <div className="App">
+        <Button type="primary" onClick={() => setNumber((v) => v - 1)}>
+          -
+        </Button>
+        <div>{number}</div>
+        <Button type="primary" onClick={() => setNumber((v) => v + 1)}>
+          +
+        </Button>
+        <ReactECharts option={option} />
+        <Table dataSource={data} columns={columns} />
+      </div>
+    </LayoutCom>
   );
 };
+
 export async function getServerSideProps() {
   const res = await fetch(`https://api.oioweb.cn/api/common/history`);
   const data = await res.json();
@@ -86,4 +91,5 @@ export async function getServerSideProps() {
     }, // will be passed to the page component as props
   };
 }
+
 export default Home;
