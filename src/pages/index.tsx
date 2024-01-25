@@ -2,8 +2,6 @@ import { Button, Table } from 'antd';
 import ReactECharts from 'echarts-for-react';
 import { FC, useState } from 'react';
 
-import LayoutCom from '@/components/LayoutCom';
-
 interface DataProps {
   picUrl: string;
   year: string;
@@ -61,19 +59,17 @@ const Home: FC<IHomeProps> = ({ data }) => {
     },
   ];
   return (
-    <LayoutCom>
-      <div className="App">
-        <Button type="primary" onClick={() => setNumber((v) => v - 1)}>
-          -
-        </Button>
-        <div>{number}</div>
-        <Button type="primary" onClick={() => setNumber((v) => v + 1)}>
-          +
-        </Button>
-        <ReactECharts option={option} />
-        <Table rowKey={'key'} dataSource={data} columns={columns} />
-      </div>
-    </LayoutCom>
+    <div className="App">
+      <Button type="primary" onClick={() => setNumber((v) => v - 1)}>
+        -
+      </Button>
+      <div>{number}</div>
+      <Button type="primary" onClick={() => setNumber((v) => v + 1)}>
+        +
+      </Button>
+      <ReactECharts option={option} />
+      <Table rowKey={'key'} dataSource={data} columns={columns} />
+    </div>
   );
 };
 
