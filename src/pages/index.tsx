@@ -5,10 +5,12 @@ import { FC, useState } from 'react';
 import LayoutCom from '@/components/LayoutCom';
 
 interface DataProps {
+  picUrl: string;
   year: string;
   title: string;
-  desc: string;
-  link: string;
+  month: string;
+  day: string;
+  details: string;
 }
 type IData = DataProps[];
 interface IHomeProps {
@@ -45,17 +47,17 @@ const Home: FC<IHomeProps> = ({ data }) => {
     {
       title: '年份',
       dataIndex: 'year',
-      key: 'name',
+      key: 'year',
     },
     {
       title: '标题',
       dataIndex: 'title',
-      key: 'age',
+      key: 'title',
     },
     {
       title: '描述',
-      dataIndex: 'desc',
-      key: 'address',
+      dataIndex: 'details',
+      key: 'details',
     },
   ];
   return (
@@ -69,14 +71,16 @@ const Home: FC<IHomeProps> = ({ data }) => {
           +
         </Button>
         <ReactECharts option={option} />
-        <Table dataSource={data} columns={columns} />
+        <Table rowKey={'key'} dataSource={data} columns={columns} />
       </div>
     </LayoutCom>
   );
 };
 
 export async function getServerSideProps() {
-  const res = await fetch(`https://api.oioweb.cn/api/common/history`);
+  const res = await fetch(
+    `https://www.mxnzp.com/api/history/today?type=1&app_id=rgihdrm0kslojqvm&app_secret=WnhrK251TWlUUThqaVFWbG5OeGQwdz09`,
+  );
   const data = await res.json();
 
   if (!data) {
@@ -87,7 +91,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      data: data.result || [],
+      data: data.data || [],
     }, // will be passed to the page component as props
   };
 }
