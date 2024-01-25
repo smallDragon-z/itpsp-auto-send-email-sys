@@ -68,7 +68,7 @@ const Home: FC<IHomeProps> = ({ data }) => {
         +
       </Button>
       <ReactECharts option={option} />
-      <Table rowKey={'key'} dataSource={data} columns={columns} />
+      <Table rowKey={'title'} dataSource={data} columns={columns} />
     </div>
   );
 };
