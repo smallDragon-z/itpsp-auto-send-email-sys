@@ -1,63 +1,223 @@
-import { Button } from 'antd';
-import { produce } from 'immer';
-import React, { useState } from 'react';
+import { Button, Card } from 'antd';
+import { FC, memo } from 'react';
+import { useImmer } from 'use-immer';
 
-interface ITodoProps {
-  id: string;
-  title: string;
-  done: boolean;
+interface DataProps {
+  key: string;
+  name: string;
+  age: number;
+  address: string;
 }
-const Login = () => {
-  const [todos, setTodos] = useState<ITodoProps[]>([
+
+type IData = DataProps[];
+const Login: FC<IData> = () => {
+  const [data, setData] = useImmer([
     {
-      id: 'React',
-      title: 'Learn React',
-      done: true,
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
     },
     {
-      id: 'Immer',
-      title: 'Try Immer',
-      done: false,
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号',
+    },
+    {
+      key: '2',
+      name: '胡彦祖',
+      age: 42,
+      address: '西湖区湖底公园1号',
     },
   ]);
-  const handleUpdate = () => {
-    setTodos(
-      produce((draft) => {
-        console.log(draft);
-        draft[0].title = 'Not Learn React';
-      }),
-    );
+
+  const handleAdd = () => {
+    setData((draft) => {
+      draft.push({
+        key: Math.random() * 1000 + '',
+        name: '胡彦斌',
+        age: 32,
+        address: '西湖区湖底公园1号',
+      });
+    });
   };
-  const handleAdd = (item: ITodoProps) => {
-    setTodos(
-      produce((draft) => {
-        draft.push(item);
-        console.log(draft);
-      }),
-    );
+  const handleRemoveItem = () => {
+    setData((draft) => {
+      draft.pop();
+    });
   };
   return (
+    <>
+      <DataList data={data} />
+      <Button type="primary" onClick={handleAdd}>
+        ADD ONE PERSON
+      </Button>
+      <Button type="primary" onClick={handleRemoveItem}>
+        REMOVE ONE PERSON
+      </Button>
+    </>
+  );
+};
+
+const DataList = (props: { data: IData }) => {
+  const { data } = props;
+  return (
     <div>
-      <Button
-        type="primary"
-        onClick={() =>
-          handleAdd({
-            id: 'Vue',
-            title: 'Learn Vue',
-            done: true,
-          })
-        }
-      >
-        handleAdd
-      </Button>
-      <Button type="primary" onClick={handleUpdate}>
-        handleUpdate
-      </Button>
-      {todos.map((todo, index) => (
-        <div key={index}>{todo.title}</div>
+      {data.map((item, i) => (
+        <DataItem key={item.key} index={i} item={item} />
       ))}
     </div>
   );
 };
+DataList.displayName = 'DataList';
 
+const DataItem = memo((props: { index: number; item: DataProps }) => {
+  const { item, index } = props;
+  const [oneItem, setOneItem] = useImmer(item);
+  const handleUpdate = () => {
+    setOneItem((draft) => {
+      draft.name = '胡彦祖2';
+    });
+  };
+  return (
+    <Card id={index.toString()} title="Default size card" extra={<a href="#1">More</a>} style={{ width: 300 }}>
+      <div onClick={handleUpdate}>{oneItem.name}</div>
+      <div>{oneItem.age}</div>
+    </Card>
+  );
+});
+DataItem.displayName = 'DataItem';
 export default Login;
