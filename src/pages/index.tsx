@@ -1,6 +1,6 @@
 import { Button, Table } from 'antd';
 import ReactECharts from 'echarts-for-react';
-import { FC, useState } from 'react';
+import { FC, memo, useState } from 'react';
 
 interface DataProps {
   picUrl: string;
@@ -24,22 +24,6 @@ const Home: FC<IHomeProps> = ({ data }) => {
   };
   const xData = setXData(data);
   const yData = setYData(data);
-
-  const option = {
-    xAxis: {
-      type: 'category',
-      data: xData,
-    },
-    yAxis: {
-      type: 'value',
-    },
-    series: [
-      {
-        data: yData,
-        type: 'line',
-      },
-    ],
-  };
 
   const columns = [
     {
@@ -67,15 +51,42 @@ const Home: FC<IHomeProps> = ({ data }) => {
       <Button type="primary" onClick={() => setNumber((v) => v + 1)}>
         +
       </Button>
-      <ReactECharts option={option} />
+      <EchartsCom xData={xData} yData={yData} />
       <Table rowKey={'title'} dataSource={data} columns={columns} />
     </div>
   );
 };
 
+type StringArray = Array<string>;
+type NumberArray = Array<number>;
+interface IEchartsComProps {
+  xData: StringArray;
+  yData: NumberArray;
+}
+const EchartsCom: FC<IEchartsComProps> = memo((props) => {
+  const { xData, yData } = props;
+  const option = {
+    xAxis: {
+      type: 'category',
+      data: xData,
+    },
+    yAxis: {
+      type: 'value',
+    },
+    series: [
+      {
+        data: yData,
+        type: 'line',
+      },
+    ],
+  };
+  return <ReactECharts option={option} />;
+});
+EchartsCom.displayName = 'EchartsCom';
+
 export async function getServerSideProps() {
   const res = await fetch(
-    `https://www.mxnzp.com/api/history/today?type=1&app_id=rgihdrm0kslojqvm&app_secret=WnhrK251TWlUUThqaVFWbG5OeGQwdz09`,
+    `https://www.mxnzp.com/api/history/today?type=1&app_id=rgihdrm0kslojqvm&app_secret=WnhrK251TWlUUThqaVFWbG5OeGQwdz09`
   );
   const data = await res.json();
 
