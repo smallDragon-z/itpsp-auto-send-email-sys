@@ -5,7 +5,7 @@ import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import React from 'react';
 
-import LayoutCom from '@/components/LayoutCom';
+import BasicLayout from '@/layouts/BasicLayout';
 import theme from '@/theme/themeConfig';
 
 const App = ({ Component, pageProps }: AppProps) => {
@@ -15,9 +15,9 @@ const App = ({ Component, pageProps }: AppProps) => {
   }
   return (
     <ConfigProvider theme={theme}>
-      <LayoutCom>
+      <BasicLayout>
         <Component {...pageProps} />
-      </LayoutCom>
+      </BasicLayout>
     </ConfigProvider>
   );
 };

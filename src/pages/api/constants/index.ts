@@ -1,5 +1,5 @@
 const URL_REG = new RegExp(
-  "^(http|https|ftp)://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?/?([a-zA-Z0-9-._?,'/\\+&amp;%$#=~])*$",
+  "^(http|https|ftp)://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?/?([a-zA-Z0-9-._?,'/\\+&amp;%$#=~])*$"
 );
 
 const DOUBLE_SLASH_REG = /^\/\//; // 匹配以双斜杠开头

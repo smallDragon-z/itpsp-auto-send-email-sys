@@ -103,7 +103,7 @@ export default async function getWebPageContent(req: NextApiRequest, res: NextAp
             if (headJsCodeSource[index].code.includes('</script>')) {
               headJsCodeSource[index].code = headJsCodeSource[index].code.replace(
                 /<\/script>/g,
-                '&lt;' + '/script' + '&gt;',
+                '&lt;' + '/script' + '&gt;'
               );
             }
             // $(element).removeAttr('src').text(headJsCodeSource[index].code);

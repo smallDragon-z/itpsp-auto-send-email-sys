@@ -29,6 +29,9 @@
   "dependencies": {
     "@ant-design/cssinjs": "^1.18.4",
     "@ant-design/icons": "^5.2.6",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "ahooks": "^3.7.9",
     "antd": "^5.11",
     "axios": "^1.6.7",
     "cheerio": "1.0.0-rc.12",

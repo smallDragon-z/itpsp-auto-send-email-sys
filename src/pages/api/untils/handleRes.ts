@@ -7,7 +7,10 @@ const handleRes = (res: NextApiResponse) => {
   const resInvalid = (msg: string) => {
     res.status(400).json({ msg, code: 400 });
   };
-  return { resHTML, resInvalid };
+  const resSuccess = <T>(data: T) => {
+    res.status(200).json({ data, code: 0 });
+  };
+  return { resHTML, resInvalid, resSuccess };
 };
 
 export default handleRes;
