@@ -24,6 +24,7 @@ import React, { FC } from 'react';
 import Content from '@/layouts/BasicLayout/components/Content';
 import Header from '@/layouts/BasicLayout/components/Header';
 import Sider from '@/layouts/BasicLayout/components/Sider';
+import StyledLayout from '@/layouts/StyledLayout';
 
 import styles from './index.module.css';
 
@@ -33,17 +34,19 @@ interface IBasicLayoutProps {
 const BasicLayout: FC<IBasicLayoutProps> = (props) => {
   const { children } = props;
   return (
-    <ClassNames>
-      {({ cx }) => (
-        <Layout className={cx(styles.layout)}>
-          <Header />
-          <Layout>
-            <Sider />
-            <Content>{children}</Content>
+    <StyledLayout>
+      <ClassNames>
+        {({ cx }) => (
+          <Layout className={cx(styles.layout)}>
+            <Header />
+            <Layout>
+              <Sider />
+              <Content>{children}</Content>
+            </Layout>
           </Layout>
-        </Layout>
-      )}
-    </ClassNames>
+        )}
+      </ClassNames>
+    </StyledLayout>
   );
 };
 

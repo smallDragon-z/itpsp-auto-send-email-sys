@@ -28,6 +28,8 @@ const Index = () => {
             css`
               height: 3rem;
               padding: 1.333rem 1.333rem 1.333rem 0;
+              border-top-left-radius: 0.833rem;
+              border-bottom-right-radius: 0.833rem;
               line-height: 3rem;
               background: #fff;
               color: #000;
