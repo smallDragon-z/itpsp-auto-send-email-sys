@@ -22,6 +22,7 @@ import { Layout } from 'antd';
 import React, { FC } from 'react';
 
 import Content from '@/layouts/BasicLayout/components/Content';
+import ContentBreadcrumb from '@/layouts/BasicLayout/components/ContentBreadcrumb';
 import Header from '@/layouts/BasicLayout/components/Header';
 import Sider from '@/layouts/BasicLayout/components/Sider';
 import StyledLayout from '@/layouts/StyledLayout';
@@ -41,7 +42,12 @@ const BasicLayout: FC<IBasicLayoutProps> = (props) => {
             <Header />
             <Layout>
               <Sider />
-              <Content>{children}</Content>
+              <Content>
+                <div>
+                  <ContentBreadcrumb />
+                </div>
+                {children}
+              </Content>
             </Layout>
           </Layout>
         )}

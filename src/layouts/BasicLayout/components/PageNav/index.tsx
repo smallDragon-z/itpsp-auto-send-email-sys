@@ -24,8 +24,8 @@ function getItem(
 
 const items: MenuProps['items'] = [
   getItem('首页', '/home', <AppstoreOutlined />),
-  getItem('邮件', '/email', <MailOutlined />),
-  getItem('配置修改', '/set', <SettingOutlined />),
+  getItem('邮件配置', '/email', <MailOutlined />),
+  getItem('全局配置', '/set', <SettingOutlined />),
 ];
 
 const Index: React.FC = () => {
