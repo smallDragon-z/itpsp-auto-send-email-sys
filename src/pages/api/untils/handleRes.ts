@@ -4,7 +4,7 @@ const handleRes = (res: NextApiResponse) => {
   const resHTML = (data: string) => {
     res.status(200).send(data);
   };
-  const resInvalid = (msg: string, error: Error) => {
+  const resInvalid = (msg: string, error?: Error) => {
     res.status(400).json({ msg, error, code: 400 });
   };
   const resSuccess = <T>(data: T) => {

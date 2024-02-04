@@ -27,6 +27,8 @@ const connectFTP = async (imageBuffer: Buffer) => {
     //   console.log(info);
     // });
   } catch (err) {
+    console.log('err');
+    console.log(err);
     await Promise.reject(err);
   } finally {
     client.close();
