@@ -1,4 +1,5 @@
 import * as ftp from 'basic-ftp';
+import day from 'dayjs';
 import { Readable } from 'stream';
 const FTP_CONFIG = {
   host: '192.168.100.17',
@@ -13,21 +14,20 @@ const connectFTP = async (imageBuffer: Buffer) => {
   const client = new ftp.Client();
   client.ftp.verbose = true;
   try {
+    const curDate = day().format('YYYY-MM-DD');
     // const img = sharp(imageBuffer).toFormat('png');
     const ImageReadableStream = Readable.from(imageBuffer);
     await client.access(FTP_CONFIG);
     await client.cd('testFile');
-    const remotePath = 'uploaded_image.png';
+    const remotePath = curDate + '_image.png';
     // await client.uploadFrom(remotePath, remotePath);
     await client.uploadFrom(ImageReadableStream, remotePath);
-    // await client.downloadTo('README_COPY.md', 'README_FTP.md');
-    client.trackProgress((info) => {
-      console.log('info');
-      console.log(info);
-    });
+    // client.trackProgress((info) => {
+    //   console.log('info');
+    //   console.log(info);
+    // });
   } catch (err) {
-    console.log('connect error');
-    console.log(err);
+    await Promise.reject(err);
   } finally {
     client.close();
   }
