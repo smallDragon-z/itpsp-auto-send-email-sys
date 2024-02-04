@@ -13,10 +13,10 @@ export default async function getPagePic(req: NextApiRequest, res: NextApiRespon
   const browser = await puppeteer.launch({
     executablePath: path.resolve(CHROME_PATH),
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    defaultViewport: {
-      width: 1600,
-      height: 937,
-    },
+    // defaultViewport: {
+    //   width: 1600,
+    //   height: 937,
+    // },
   });
   const page = await browser.newPage();
   await page.goto(url as string);
@@ -27,9 +27,3 @@ export default async function getPagePic(req: NextApiRequest, res: NextApiRespon
 
   resSuccess({ msg: 'success' });
 }
-
-export const config = {
-  api: {
-    responseLimit: false,
-  },
-};

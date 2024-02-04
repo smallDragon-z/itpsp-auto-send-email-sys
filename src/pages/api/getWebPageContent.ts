@@ -125,9 +125,3 @@ export default async function getWebPageContent(req: NextApiRequest, res: NextAp
     resInvalid(`Error creating ${(e as Error).message}`);
   }
 }
-
-export const config = {
-  api: {
-    responseLimit: false,
-  },
-};

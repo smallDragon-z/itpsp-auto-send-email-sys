@@ -43,9 +43,7 @@ const BasicLayout: FC<IBasicLayoutProps> = (props) => {
             <Layout>
               <Sider />
               <Content>
-                <div>
-                  <ContentBreadcrumb />
-                </div>
+                <ContentBreadcrumb />
                 {children}
               </Content>
             </Layout>

@@ -29,7 +29,7 @@ const Index: FC<IHeaderProps> = (props) => {
       {({ css, cx }) => (
         <Sider
           className={cx(css`
-            height: calc(100vh - 3rem);
+            height: 100%;
             overflow: auto;
             //    修改滚动条样式
             &::-webkit-scrollbar {

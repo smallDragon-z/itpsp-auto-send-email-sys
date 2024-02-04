@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['antd', '@ant-design/icons'],
+  transpilePackages: ['antd', '@ant-design/icons','ahooks'],
   // 路由重定向
   async redirects() {
     return [

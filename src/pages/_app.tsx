@@ -5,6 +5,7 @@ import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import React from 'react';
 
+import ReduxProvider from '@/context/ReduxProvider';
 import BasicLayout from '@/layouts/BasicLayout';
 import theme from '@/theme/themeConfig';
 
@@ -15,9 +16,11 @@ const App = ({ Component, pageProps }: AppProps) => {
   }
   return (
     <ConfigProvider theme={theme}>
-      <BasicLayout>
-        <Component {...pageProps} />
-      </BasicLayout>
+      <ReduxProvider>
+        <BasicLayout>
+          <Component {...pageProps} />
+        </BasicLayout>
+      </ReduxProvider>
     </ConfigProvider>
   );
 };
