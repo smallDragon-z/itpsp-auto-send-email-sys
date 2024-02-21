@@ -11,7 +11,7 @@ import theme from '@/theme/themeConfig';
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
-  if (router.pathname === '/login') {
+  if (router.pathname === '/login' || router.pathname === '/demo') {
     return <Component {...pageProps} />;
   }
   return (

@@ -1,35 +1,27 @@
 import * as ftp from 'basic-ftp';
 import day from 'dayjs';
-import { Readable } from 'stream';
-const FTP_CONFIG = {
-  host: '192.168.100.17',
-  port: 21,
-  user: 'zhangxiaolong',
-  password: '6231977891',
-  secure: false, // 设置为true，如果使用FTPS
-};
+import fs from 'fs';
 
+import { FTP_CONFIG } from '@/pages/api/constants';
 const connectFTP = async (imageBuffer: Buffer) => {
   // 将picSource上传到FTP服务器
   const client = new ftp.Client();
   client.ftp.verbose = true;
+  // pic临时存储路径
+  const picPath = './temp.png';
   try {
     const curDate = day().format('YYYY-MM-DD');
-    // const img = sharp(imageBuffer).toFormat('png');
-    const ImageReadableStream = Readable.from(imageBuffer);
     await client.access(FTP_CONFIG);
     await client.cd('testFile');
-    const remotePath = curDate + '_image.png';
-    // await client.uploadFrom(remotePath, remotePath);
-    await client.uploadFrom(ImageReadableStream, remotePath);
-    // client.trackProgress((info) => {
-    //   console.log('info');
-    //   console.log(info);
-    // });
+    fs.writeFileSync(picPath, imageBuffer);
+    const remotePath = curDate + '.png';
+    await client.uploadFrom(picPath, remotePath);
+    client.trackProgress((info) => console.log(info.bytesOverall));
   } catch (err) {
     console.log('err');
     console.log(err);
     await Promise.reject(err);
+    client.trackProgress();
   } finally {
     client.close();
   }

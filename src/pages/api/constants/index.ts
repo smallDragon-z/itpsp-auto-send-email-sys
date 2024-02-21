@@ -18,3 +18,10 @@ export {
    * */
   SINGLE_SLASH_REG,
 };
+export const FTP_CONFIG = {
+  host: '192.168.100.17',
+  port: 21,
+  user: 'zhangxiaolong',
+  password: '6231977891',
+  secure: false, // 设置为true，如果使用FTPS
+};
